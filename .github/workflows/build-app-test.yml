@@ -1,0 +1,19 @@
+name: CI - Dump model info
+
+on:
+  push:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Dump model info
+    runs-on: macos-13
+    if: github.repository_owner == 'dortania'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Dump model info
+        run: /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 OpenCore-Patcher-GUI.command --help
